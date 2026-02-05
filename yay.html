@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAY!</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+/* Même carte que sur la page principale */
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Titre animé */
+h1 {
+    color: #ff3366;
+    font-size: clamp(50px, 10vw, 90px);
+    animation: pulse 1.5s infinite;
+}
+
+/* Image */
+img {
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    max-width: 80%;
+    margin-top: 20px;
+}
+
+/* Animations IDENTIQUES à la page 1 */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Cœurs animés (identiques) */
+.heart {
+    position: absolute;
+    font-size: 24px;
+    animation: fall 4s linear infinite;
+}
+
+@keyframes fall {
+    from { transform: translateY(-100px); opacity: 1; }
+    to { transform: translateY(100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MÊME SCRIPT DE CŒURS QUE SUR LA PREMIÈRE PAGE -->
+<script>
+for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+<div class="card">
+    <h1>YAY!!! 🎉💥</h1>
+
+    <img src="https://media.giphy.com/media/l0HlQ7LRalQqdWfao/giphy.gif" width="350">
+</div>
+
+</body>
+</html>

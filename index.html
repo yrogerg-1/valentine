@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine?</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+/* Conteneur principal */
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Titre animé */
+h1 {
+    color: #ff3366;
+    font-size: clamp(24px, 5vw, 36px);
+    animation: pulse 1.5s infinite;
+}
+
+/* Boutons */
+.buttons {
+    margin-top: 30px;
+    position: relative;
+    width: 100%;
+    height: 120px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+/* Bouton Yes (prépondérant) */
+#yes {
+    background: #ff3366;
+    color: white;
+    font-size: 22px;
+    box-shadow: 0 5px 15px rgba(255,51,102,0.4);
+}
+
+/* Bouton No (troll) */
+#no {
+    background: #ccc;
+    position: absolute;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Petits coeurs animés */
+.heart {
+    position: absolute;
+    font-size: 24px;
+    animation: fall 4s linear infinite;
+}
+
+@keyframes fall {
+    from { transform: translateY(-100px); opacity: 1; }
+    to { transform: translateY(100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Cœurs animés en arrière-plan -->
+<script>
+for (let i = 0; i < 20; i++) {
+    const heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+<div class="card">
+    <h1>Will you be my Valentine ? 💘</h1>
+
+    <div class="buttons">
+        <button id="yes" onclick="goToYay()">Yes💘</button>
+        <button id="no">No</button>
+    </div>
+</div>
+
+<script>
+function goToYay() {
+    window.location.href = "yay.html";
+}
+
+// BOUTON "NO" IMPOSSIBLE À CLIQUER (TROLL MODE 😈)
+const noButton = document.getElementById("no");
+
+noButton.addEventListener("mouseover", function() {
+    const maxX = window.innerWidth * 0.6;
+    const maxY = 100;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
+});
+
+// Même si on arrive à cliquer par hasard → il s'échappe
+noButton.addEventListener("click", function(e) {
+    e.preventDefault();
+});
+</script>
+
+</body>
+</html>
